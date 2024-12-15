@@ -1,4 +1,31 @@
 {
+  "name": "@omer-x/md-to-json",
+  "version": "1.0.0",
+  "description": "Converts markdown strings into a human-readable JSON format",
+  "keywords": [
+    "markdown",
+    "converter",
+    "json",
+    "human-readable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omermecitoglu/md-to-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omermecitoglu/md-to-json/issues"
+  },
+  "homepage": "https://github.com/omermecitoglu/md-to-json#readme",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Omer Mecitoglu",
+    "email": "omer.mecitoglu@gmail.com",
+    "url": "https://omermecitoglu.github.io"
+  },
+  "license": "MIT",
   "type": "module",
   "files": [
     "dist/"
@@ -16,12 +43,13 @@
     "build": "tsup"
   },
   "dependencies": {
-    "react": "^18.3.1"
+    "markdown-it": "^14.1.0"
   },
   "devDependencies": {
     "@omer-x/eslint-config": "^2.1.2",
     "@omer-x/openapi-types": "^1.2.0",
-    "eslint": "^9.16.0",
+    "@types/markdown-it": "^14.1.2",
+    "eslint": "^9.17.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.5",
