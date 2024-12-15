@@ -1,4 +1,4 @@
 export type Section = {
   title?: string,
-  content: string[],
+  content: (string | string[])[],
 };

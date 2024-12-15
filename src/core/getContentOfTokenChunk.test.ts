@@ -22,8 +22,10 @@ describe("getContentOfTokenChunk", () => {
     ];
     const output = getContentOfTokenChunk(input);
     expect(output).toStrictEqual([
-      "unimportant content",
-      "unimportant content",
+      [
+        "unimportant content",
+        "unimportant content",
+      ],
     ]);
   });
 

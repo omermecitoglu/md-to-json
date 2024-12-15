@@ -6,17 +6,17 @@ export default function bundleChunks(bundle: Section[], chunk: Token[]): Section
   const opener = chunk[0];
   if (!opener) throw new Error("EMPTY_CHUNK", { cause: chunk });
   if (opener.type === "heading_open") {
-    const [title] = getContentOfTokenChunk(chunk);
+    const [title] = getContentOfTokenChunk(chunk) as string[];
     return [
       ...bundle,
       { title, content: [] },
     ];
   }
-  const newItem = getContentOfTokenChunk(chunk);
+  const newItems = getContentOfTokenChunk(chunk);
   const lastSection = bundle[bundle.length - 1];
   if (!lastSection) {
     return [
-      { content: [...newItem] },
+      { content: [...newItems] },
     ];
   }
   return [
@@ -25,7 +25,7 @@ export default function bundleChunks(bundle: Section[], chunk: Token[]): Section
       ...lastSection,
       content: [
         ...lastSection.content,
-        ...newItem,
+        ...newItems,
       ],
     },
   ];
