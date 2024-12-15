@@ -1,3 +1,4 @@
-export function exampleFunction() {
-  console.log(" This is an example function ");
-}
+import convertMarkdownToJSON from "./core/convertMarkdownToJSON";
+
+export default convertMarkdownToJSON;
+export { convertMarkdownToJSON };
