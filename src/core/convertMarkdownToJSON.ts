@@ -25,7 +25,7 @@ export default function convertMarkdownToJSON(markdown: string): ConversionResul
     if (error instanceof Error) {
       return {
         success: false,
-        errorCode: error.message as "UNKNOWN_CLOSER_TYPE",
+        errorCode: error.message as ("UNKNOWN_CLOSER_TYPE" | "EMPTY_CHUNK" | "IRREGULAR_CHUNK"),
         errorCause: error.cause,
       };
     }

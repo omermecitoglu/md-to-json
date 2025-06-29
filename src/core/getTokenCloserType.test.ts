@@ -7,6 +7,7 @@ describe("getTokenCloserType", () => {
     expect(getTokenCloserType("list_item_open")).toBe("list_item_close");
     expect(getTokenCloserType("paragraph_open")).toBe("paragraph_close");
     expect(getTokenCloserType("heading_open")).toBe("heading_close");
+    expect(getTokenCloserType("blockquote_open")).toBe("blockquote_close");
     expect(getTokenCloserType("unknown")).toBe(null);
   });
 });

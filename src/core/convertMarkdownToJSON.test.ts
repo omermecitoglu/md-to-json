@@ -166,4 +166,43 @@ describe("convertMarkdownToJSON", () => {
     expect(() => convertMarkdownToJSON("# Header")).toThrow("UNKNOWN_INTERNAL_ERROR");
     spy.mockRestore();
   });
+
+  it("should handle blockquotes correctly", () => {
+    const input = normalizeMarkDown(`
+      # Blockers
+
+      - [ ] #146 
+
+      # Suggestion
+
+      > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+      > Aliquam rhoncus dolor a facilisis tempor.
+
+      > Phasellus in eros sed purus laoreet mollis.
+
+      > Nullam ut purus dignissim, semper justo in, rhoncus ligula.
+    `);
+    const output = convertMarkdownToJSON(input);
+    expect(output).toStrictEqual({
+      success: true,
+      sections: [
+        {
+          title: "Blockers",
+          content: [
+            ["[ ] #146"],
+          ],
+        },
+        {
+          title: "Suggestion",
+          content: [
+            ["Lorem ipsum dolor sit amet, consectetur adipiscing elit."],
+            ["Aliquam rhoncus dolor a facilisis tempor."],
+            ["Phasellus in eros sed purus laoreet mollis."],
+            ["Nullam ut purus dignissim, semper justo in, rhoncus ligula."],
+          ],
+        },
+      ],
+    });
+  });
 });

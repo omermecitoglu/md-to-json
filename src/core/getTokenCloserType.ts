@@ -4,6 +4,7 @@ export default function getTokenCloserType(tokenType: string) {
     case "list_item_open": return "list_item_close";
     case "paragraph_open": return "paragraph_close";
     case "heading_open": return "heading_close";
+    case "blockquote_open": return "blockquote_close";
     case "fence": return "fence";
     default: return null;
   }
