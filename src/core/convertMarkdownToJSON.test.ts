@@ -1,4 +1,4 @@
-import { describe, expect, it, jest } from "@jest/globals";
+import { describe, expect, it, vi } from "vitest";
 import normalizeMarkDown from "~/utils/normalizeMarkDown";
 import convertMarkdownToJSON from "./convertMarkdownToJSON";
 
@@ -150,7 +150,7 @@ describe("convertMarkdownToJSON", () => {
 
   it("should return an unsuccessful result when there is an internal error thrown", async () => {
     const module = await import("./findNextCloserIndex");
-    const spy = jest.spyOn(module, "default").mockImplementation(() => {
+    const spy = vi.spyOn(module, "default").mockImplementation(() => {
       throw new Error("UNKNOWN_CLOSER_TYPE", { cause: "test" });
     });
     const output = convertMarkdownToJSON("# Header");
@@ -160,7 +160,7 @@ describe("convertMarkdownToJSON", () => {
 
   it("should throw it upstream if catches an unknown internal error", async () => {
     const module = await import("./findNextCloserIndex");
-    const spy = jest.spyOn(module, "default").mockImplementation(() => {
+    const spy = vi.spyOn(module, "default").mockImplementation(() => {
       throw "UNKNOWN_INTERNAL_ERROR";
     });
     expect(() => convertMarkdownToJSON("# Header")).toThrow("UNKNOWN_INTERNAL_ERROR");
