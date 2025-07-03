@@ -205,4 +205,41 @@ describe("convertMarkdownToJSON", () => {
       ],
     });
   });
+
+  it("should handle tables correctly", () => {
+    const input = normalizeMarkDown(`
+      # Blockers
+
+      - [ ] #146 
+
+      # Table
+
+      | Name     | Age | Country     |
+      |----------|-----|-------------|
+      | Alice    | 25  | USA         |
+      | Bob      | 30  | UK          |
+      | Charlie  | 28  | Indonesia   |
+    `);
+    const output = convertMarkdownToJSON(input);
+    expect(output).toStrictEqual({
+      success: true,
+      sections: [
+        {
+          title: "Blockers",
+          content: [
+            ["[ ] #146"],
+          ],
+        },
+        {
+          title: "Table",
+          content: [
+            [
+              "Name,Age,Country",
+              "Alice,25,USA,Bob,30,UK,Charlie,28,Indonesia",
+            ],
+          ],
+        },
+      ],
+    });
+  });
 });
